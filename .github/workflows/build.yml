@@ -14,6 +14,7 @@ jobs:
         run: docker build -t action-sample .
 
   test-job:   # コンテナを起動してテストする
+    runs-on: ubuntu-latest
     needs: build-job
     steps:
       - name: Run test script
