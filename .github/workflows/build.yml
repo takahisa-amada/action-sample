@@ -1,0 +1,20 @@
+name: build-test
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-job:  # Dockerfileをビルドする
+    steps:
+      - name: Run build script
+        shell: bash
+        run: docker build -t action-sample .
+
+  test-job:   # コンテナを起動してテストする
+    needs: build-job
+    steps:
+      - name: Run test script
+        shell: bash
+        run: docker run action-sample
+
