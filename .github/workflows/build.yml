@@ -19,7 +19,7 @@ jobs:
         with:
           name: action-sample
           path: action-sample.tar
-          retention-days: 1
+          retention-days: 5
 
   test-job:   # コンテナを起動してテストする
     runs-on: ubuntu-latest
@@ -28,7 +28,7 @@ jobs:
       - name: Download a single artifact
         uses: actions/download-artifact@v2
         with:
-          name: action-sample.tar
+          name: action-sample
       - name: load image from file
         run: docker load --input action-sample.tar
       - name: Run test script
