@@ -6,7 +6,9 @@ on:
 
 jobs:
   build-job:  # Dockerfileをビルドする
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Run build script
         shell: bash
         run: docker build -t action-sample .
