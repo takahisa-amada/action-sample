@@ -3,7 +3,8 @@ name: build-test
 on:
   push:
     branches: [ master ]
-
+  workflow_dispatch:
+    
 jobs:
   build-job:  # Dockerfileをビルドする
     runs-on: ubuntu-latest
