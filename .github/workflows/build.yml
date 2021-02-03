@@ -10,7 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run build script
-        shell: bash
         run: docker build -t action-sample .
 
   test-job:   # コンテナを起動してテストする
