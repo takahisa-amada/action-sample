@@ -13,7 +13,7 @@ jobs:
       - name: Run build script
         run: docker build -t action-sample .
       - name: Run container
-        uses: docker://action-sample:latest
+        uses: docker://hello-world:latest
       
       # - name: save image to file
       #   run: docker save action-sample > action-sample.tar
