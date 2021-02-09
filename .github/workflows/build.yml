@@ -12,17 +12,19 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run build script
         run: docker build -t action-sample .
-      - name: Run container
-        uses: docker://hello-world:latest
-      
+      - name: Run test script
+        shell: bash
+        run: docker run --mount type=bind,src=${PWD}/work_dir,dst=/home/work_dir action-sample bash /home/work_dir/test.sh
+      # - name: Run container
+      #   uses: docker://hello-world:latest
       # - name: save image to file
       #   run: docker save action-sample > action-sample.tar
-      # - name: Upload Artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: action-sample
-      #     path: action-sample.tar
-      #     retention-days: 5
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: action-sample
+          path: work_dir/output.txt
+          retention-days: 5
 
   # test-job:   # コンテナを起動してテストする
   #   runs-on: ubuntu-latest
